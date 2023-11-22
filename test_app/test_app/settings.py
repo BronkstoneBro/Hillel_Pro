@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # 3dh party app
     'djrichtextfield',
+    'rest_framework',
+    'drf_yasg',
 
     # my app
     'catalog',

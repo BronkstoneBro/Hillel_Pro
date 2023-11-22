@@ -28,7 +28,7 @@ class Category(DateTimeStamp):
 
 class Tag(models.Model):
     name = models.CharField('Имя товару', max_length=25, unique=True)
-    uniq = models.UUIDField ('UUID')
+    uuid = models.UUIDField ('UUID')
 
     class Meta:
         verbose_name= "Тег"
@@ -41,7 +41,7 @@ class Tag(models.Model):
 
 class Goods(DateTimeStamp):
     name = models.CharField('Имя товару', max_length=25, unique=True)
-    escription = RichTextField('Описание', blank=True)
+    description = RichTextField('Описание', blank=True)
     activate = models.BooleanField('Active', default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='goods')
     tags = models.ManyToManyField(Tag, related_name='goods_tag')
