@@ -15,6 +15,7 @@ class Category(DateTimeStamp):
     email = models.EmailField ('Email', blank=True)
     description = RichTextField ('Описание', blank=True)
     activate = models.BooleanField('Active', default=False)
+    image = models.URLField('Image URL', blank=True)
 
 
 
@@ -42,6 +43,7 @@ class Tag(models.Model):
 class Goods(DateTimeStamp):
     name = models.CharField('Имя товару', max_length=25, unique=True)
     description = RichTextField('Описание', blank=True)
+    price = models.FloatField('Price', default=0)
     activate = models.BooleanField('Active', default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='goods')
     tags = models.ManyToManyField(Tag, related_name='goods_tag')

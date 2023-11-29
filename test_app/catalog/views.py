@@ -5,7 +5,7 @@ from .serializers import CategorySerializer, TagSerializer, GoodsSerializer
 
 class CategoryViews(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
-    queryset = Category.objects.filter(activate=True).order_by('-created')
+    queryset = Category.objects.filter(activate=True).order_by('-created').prefetch_related('goods')
 
 
 class TagViews(viewsets.ModelViewSet):
@@ -15,5 +15,5 @@ class TagViews(viewsets.ModelViewSet):
 
 class GoodsViews(viewsets.ModelViewSet):
     serializer_class = GoodsSerializer
-    queryset = Goods.objects.filter(activate=True).order_by('-created')
+    queryset = Goods.objects.filter(activate=True).order_by('-created').prefetch_related('tags')
 
