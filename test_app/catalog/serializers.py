@@ -8,11 +8,19 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'uuid']
 
 
+class CategoryNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name']
+
+
 class GoodsSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
+    category = CategoryNameSerializer(read_only=True)
+
     class Meta:
         model = Goods
-        fields = ['id', 'name', 'description', 'price', 'activate', 'created', 'image', 'tags']
+        fields = ['id', 'name', 'description', 'price', 'activate', 'created', 'image', 'tags', 'category', 'parametr']
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -25,3 +33,4 @@ class CategorySerializer(serializers.ModelSerializer):
     def get_goods_count(self, category):
         count = category.goods.count()
         return count
+

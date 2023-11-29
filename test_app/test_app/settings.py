@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 3dh party app
     'djrichtextfield',
     'rest_framework',
+    'django_filters',
     'drf_yasg',
     "debug_toolbar",
 
@@ -161,5 +162,8 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '20/minute',
         'user': '20/minute'
-    }
+    },
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
 }
